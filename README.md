@@ -2,19 +2,16 @@
 
 ## usersテーブル
 
-| Column            | Type    | Option      |
-| ----------------- | ------- | ----------- |
-| nickname          | string  | null: false |
-| email             | string  | null: false |
-| password          | string  | null: false |
-| password_confirm  | string  | null: false |
-| first_name        | string  | null: false |
-| last_name         | string  | null: false |
-| kana_first_name   | string  | null: false |
-| kana_last_name    | string  | null: false |
-| year              | integer | null: false |
-| month             | integer | null: false |
-| date              | integer | null: false |
+| Column             | Type    | Option       |
+| ------------------ | ------- | ------------ |
+| nickname           | string  | null: false  |
+| email              | string  | unique: true |
+| encrypted_password | string  | null: false  |
+| first_name         | string  | null: false  |
+| last_name          | string  | null: false  |
+| kana_first_name    | string  | null: false  |
+| kana_last_name     | string  | null: false  |
+| birth_date         | date    | null: false  |
 
  ### Association
 
@@ -25,14 +22,13 @@
 
 | Column      | Type       | Option            |
 | ----------- | ---------- | ----------------- |
-| image       |            |                   |
 | name        | string     | null: false       |
 | description | text       | null: false       |
-| category    | string     | null: false       |
-| status      | string     | null: false       |
-| burden      | string     | null: false       |
-| area        | string     | null: false       |
-| days        | integer    | null: false       |
+| category_id | integer    | null: false       |
+| status_id   | integer    | null: false       |
+| burden_id   | integer    | null: false       |
+| area_id     | integer    | null: false       |
+| days_id     | integer    | null: false       |
 | price       | integer    | null: false       |
 | user        | references | foreign_key: true |
 
@@ -56,14 +52,15 @@
 
 ## addressesテーブル
 
-| Column       | Type       | Option            |
-| ------------ | ---------- | ----------------- |
-| postal_code  | integer    | null: false       |
-| prefecture   | string     | null: false       |
-| municipality | string     | null: false       |
-| address      | integer    | null: false       |
-| phone_number | integer    | null: false       |
-| record       | references | foreign_key: true |
+| Column        | Type       | Option            |
+| ------------- | ---------- | ----------------- |
+| postal_code   | string     | null: false       |
+| prefecture_id | integer    | null: false       |
+| municipality  | string     | null: false       |
+| building      | string     | null: false       |
+| address       | string     | null: false       |
+| phone_number  | string     | null: false       |
+| record        | references | foreign_key: true |
 
 ### Association
 
