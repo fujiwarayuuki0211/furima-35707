@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   end
 
   describe '新規登録' do
-    
     context '新規登録できる場合' do
       it 'ニックネームが存在すれば、登録できる' do
         expect(@user).to be_valid
@@ -122,13 +121,13 @@ RSpec.describe User, type: :model do
       it 'first_nameは半角だと登録できない' do
         @user.first_name = 'aaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
       it 'last_nameは半角だと登録できない' do
         @user.last_name = 'aaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
-      end    
+        expect(@user.errors.full_messages).to include('Last name is invalid')
+      end
       it 'ユーザー本名のフリガナは、名字が空だと登録できない' do
         @user.kana_last_name = ''
         @user.valid?
@@ -147,7 +146,7 @@ RSpec.describe User, type: :model do
       it 'ユーザー本名の名前のフリガナは全角かつカタカナでないと登録できない' do
         @user.kana_last_name = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana last name is invalid")
+        expect(@user.errors.full_messages).to include('Kana last name is invalid')
       end
       it '生年月日が空だと登録できない' do
         @user.birth_date = ''
