@@ -73,27 +73,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが1だと出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it 'status_idが1だと出品できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
       end
       it 'burden_idが1だと出品できない' do
         @item.burden_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Burden must be other than 1")
+        expect(@item.errors.full_messages).to include('Burden must be other than 1')
       end
       it 'area_idが1だと出品できない' do
         @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area must be other than 1")
+        expect(@item.errors.full_messages).to include('Area must be other than 1')
       end
       it 'day_idが1だと出品できない' do
         @item.day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day must be other than 1")
+        expect(@item.errors.full_messages).to include('Day must be other than 1')
       end
       it '販売価格が空だと、出品できない' do
         @item.price = ''
@@ -103,17 +103,17 @@ RSpec.describe Item, type: :model do
       it '販売価格が半角数字ではないと、出品できない' do
         @item.price = 'あああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it '販売価格が￥300以上ではないと、出品できない' do
         @item.price = 100
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it '販売価格が￥9,999,999以下ではないと、出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
     end
   end
