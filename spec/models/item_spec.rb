@@ -8,6 +8,9 @@ RSpec.describe Item, type: :model do
 
   describe '商品の出品' do
     context '商品が出品できる時' do
+      it 'すべての情報が正しければ登録できる' do
+        expect(@item).to be_valid
+      end      
       it '商品画像があれば、出品できる' do
         @item.image = fixture_file_upload('app/assets/images/star.png')
         expect(@item).to be_valid
