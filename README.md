@@ -50,15 +50,15 @@
 - belongs_to :item
 - has_one :address
 
-## addressesテーブル
+## addressテーブル
 
 | Column        | Type       | Option            |
 | ------------- | ---------- | ----------------- |
 | postal_code   | string     | null: false       |
 | prefecture_id | integer    | null: false       |
 | municipality  | string     | null: false       |
-| building      | string     |                   |
 | address       | string     | null: false       |
+| building      | string     |                   |
 | phone_number  | string     | null: false       |
 | record        | references | foreign_key: true |
 

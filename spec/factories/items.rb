@@ -9,5 +9,9 @@ FactoryBot.define do
     area_id  { Faker::Number.within(range: 2..5) }
     day_id { Faker::Number.within(range: 2..5) }
     association :user
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('app/assets/images/star.png'), filename: 'star.png')
+    end
   end
 end
