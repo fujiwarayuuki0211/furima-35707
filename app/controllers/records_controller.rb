@@ -1,10 +1,9 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :now_user, only: [:index, :create]
-  before_action :sold_out, only: [:index, :create]
+  before_action :set_item, only: [:index, :create, :pay_item, :now_user]
 
   def index
-    @item = Item.find(params[:item_id])
     @record_address = RecordAddress.new
   end
 
@@ -15,7 +14,6 @@ class RecordsController < ApplicationController
       @record_address.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -28,22 +26,21 @@ class RecordsController < ApplicationController
     )
   end
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def pay_item
-    item = Item.find(params[:item_id])
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: item.price,
+      amount: @item.price,
       card: record_address_params[:token],
       currency: 'jpy'
     )
   end
 
   def now_user
-    @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path if current_user.id == @item.user_id && @item.record.present?
   end
 
-  def sold_out
-    redirect_to root_path if @item.record.present?
-  end
 end
