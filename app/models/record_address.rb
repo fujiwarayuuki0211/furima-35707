@@ -1,6 +1,6 @@
 class RecordAddress
   include ActiveModel::Model 
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class RecordAddress
     validates :municipality
     validates :address
     validates :phone_number, numericality: { only_integer: true }, length: { maximum: 11 }
+    validates :token
   end
 
   def save
