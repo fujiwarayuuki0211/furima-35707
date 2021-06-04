@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
-    @item.image = fixture_file_upload('app/assets/images/star.png')
   end
 
   describe '商品の出品' do
@@ -12,7 +11,6 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it '商品画像があれば、出品できる' do
-        @item.image = fixture_file_upload('app/assets/images/star.png')
         expect(@item).to be_valid
       end
       it '商品名があれば、出品できる' do
