@@ -33,12 +33,12 @@ RSpec.describe RecordAddress, type: :model do
       it '郵便番号にハイフンが含まれないと保存できない' do
         @record_address.postal_code = '1234567'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Postal code is invalid")
+        expect(@record_address.errors.full_messages).to include('Postal code is invalid')
       end
       it 'prefecture_idが1だと保存できない' do
         @record_address.prefecture_id = 1
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@record_address.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it '市町村が空だと保存できない' do
         @record_address.municipality = ''
@@ -58,12 +58,12 @@ RSpec.describe RecordAddress, type: :model do
       it '電話番号が11桁以上だと保存できない' do
         @record_address.phone_number = '012345678910'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        expect(@record_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it '電話番号が数値ではないと保存できない' do
         @record_address.phone_number = 'あああああああ'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Phone number is not a number")
+        expect(@record_address.errors.full_messages).to include('Phone number is not a number')
       end
       it 'userが紐付いていないと保存できない' do
         @record_address.user_id = nil

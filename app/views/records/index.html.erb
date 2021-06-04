@@ -30,7 +30,7 @@
     <%= form_with model: @record_address, url: item_records_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
-    <%# カード情報の入力 %>
+
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -68,7 +68,6 @@
         <%= f.text_field :cvc,class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
     </div>
-    <%# /カード情報の入力 %>
     
     <div class='shipping-address-form'>
       <h1 class='info-input-haedline'>
