@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_item, only: [:index, :create]
-  before_action :now_user, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :set_item
+  before_action :now_user
 
   def index
     @record_address = RecordAddress.new
